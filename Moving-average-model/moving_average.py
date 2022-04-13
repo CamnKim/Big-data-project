@@ -43,7 +43,7 @@ y_hat_sma['sma_forecast'][train_len:] = y_hat_sma['sma_forecast'][train_len-1]
 
 # Create forecast Exponential Moving Average
 y_hat_ema = data.copy()
-y_hat_ema['sma_forecast'] = data['Open'].rolling(ma_window).mean()
+y_hat_ema['sma_forecast'] = data['Open'].ewm(span=ma_window).mean()
 y_hat_ema['sma_forecast'][train_len:] = y_hat_ema['sma_forecast'][train_len-1]
 
 # Create forecast Cumulative Moving Average
